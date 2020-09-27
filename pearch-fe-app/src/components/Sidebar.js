@@ -28,7 +28,7 @@ function Sidebar() {
             <SidebarOption Icon={MoreHorizOutlined} text="Options"/>
 
 
-            <Button variant='outlined' className='sidebar__tweet'>Draft Tweet</Button>
+            <Button variant='outlined' className='sidebar__tweet'>Tweet</Button>
         </div>
     )
 }

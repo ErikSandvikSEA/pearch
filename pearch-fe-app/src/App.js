@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles/App.css';
-import { Sidebar, Feed } from './components'
+import { Sidebar, Feed, Widgets } from './components'
 
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
 
       <Feed />
 
-      {/* Widgets */}
+      <Widgets />
     </div>
   );
 }

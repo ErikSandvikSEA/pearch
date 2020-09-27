@@ -5,7 +5,7 @@
 }
 
 .sidebarOption:hover {
-	background-color: #00d0c623;
+	background-color: var(--pearch-hover-link);
 	border-radius: 30px;
 	color: var(--pearch-color);
 	transition: 150ms ease-in-out;
