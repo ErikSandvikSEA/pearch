@@ -23,9 +23,10 @@ function Sidebar() {
     const getResponse = useSelector(state => state.getResponse)
     const url = `https://cors-anywhere.herokuapp.com/https://api.twitter.com/1.1/search/tweets.json?q=@${username}`
     
-    const sendRequest = e => {
+    const sendRequest = (e) => {
         e.preventDefault()
         dispatch(getRequest(url))
+        dispatch(setUsername(e))
     }
 
     const handleUsernameChange = e => {
@@ -35,10 +36,6 @@ function Sidebar() {
     useEffect(() => {
         console.log(getResponse)
     }, [getResponse])
-
-    useEffect(() => {
-        console.log(username)
-    }, [username])
 
     return (
         <div className='sidebar'>

@@ -41,7 +41,7 @@ export const reducer = (state = initialState, action) => {
             }
         case SET_USERNAME:
             return {
-                username: action.payload
+                username: action.payload || ''
             }
         default:
             return state
