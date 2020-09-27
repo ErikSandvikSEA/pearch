@@ -15,17 +15,22 @@ import { useSelector, useDispatch } from 'react-redux';
 //files
 import SidebarOption from './SidebarOption'
 import '../styles/Sidebar.css'
-import { getRequest } from '../state/actions'
+import { getRequest, setUsername } from '../state/actions'
 
 function Sidebar() {
-    const username ='@sandviksea'
-    const url = `https://cors-anywhere.herokuapp.com/https://api.twitter.com/1.1/search/tweets.json?q=${username}`
+    const username = useSelector(state => state.username)
     const dispatch = useDispatch()
     const getResponse = useSelector(state => state.getResponse)
-
-    const sendRequest = e => {
+    const url = `https://cors-anywhere.herokuapp.com/https://api.twitter.com/1.1/search/tweets.json?q=@${username}`
+    
+    const sendRequest = (e) => {
         e.preventDefault()
         dispatch(getRequest(url))
+        dispatch(setUsername(e))
+    }
+
+    const handleUsernameChange = e => {
+        dispatch(setUsername(e))
     }
 
     useEffect(() => {
@@ -52,14 +57,23 @@ function Sidebar() {
             >
                 Tweet
             </Button>
-
-            <Button 
-                variant='outlined' 
-                className='sidebar__get'
-                onClick={sendRequest}
-            >
-                Get Data
-            </Button>
+            <form>
+                <div className='sidebar__input'>
+                    <input 
+                        placeholder="Get Data by Username" 
+                        type='text' 
+                        onChange={handleUsernameChange}
+                        value={username}
+                    />
+                </div>
+                <Button 
+                    variant='outlined' 
+                    className='sidebar__get'
+                    onClick={sendRequest}
+                    >
+                    Get Data
+                </Button>
+            </form>
 
         </div>
     )

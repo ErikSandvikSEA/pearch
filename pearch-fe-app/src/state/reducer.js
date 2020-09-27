@@ -2,7 +2,8 @@
 import {
     GET_REQUEST_START,
     GET_REQUEST_SUCCESS,
-    GET_REQUEST_FAILURE
+    GET_REQUEST_FAILURE,
+    SET_USERNAME
 } from './actions'
 
 //initial state
@@ -10,7 +11,8 @@ const initialState = {
     isGetting: false,
     error: false,
     getResponse: {},
-    errorMessage: ''
+    errorMessage: '',
+    username: '',
 }
 
 export const reducer = (state = initialState, action) => {
@@ -36,6 +38,10 @@ export const reducer = (state = initialState, action) => {
                 isGetting: false,
                 error: true,
                 errorMessage: action.payload
+            }
+        case SET_USERNAME:
+            return {
+                username: action.payload || ''
             }
         default:
             return state
