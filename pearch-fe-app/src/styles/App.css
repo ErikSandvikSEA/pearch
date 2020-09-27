@@ -1,6 +1,7 @@
 body {
 	--pearch-color: #00aaa2;
 	--pearch-background: #e6ecf0;
+	--pearch-hover-link: #00d0c623;
 }
 
 .app {
