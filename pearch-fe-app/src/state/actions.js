@@ -4,6 +4,7 @@ import { mellin } from '../unneccessaries/notEvenNecessary'
 export const GET_REQUEST_START = "GET_REQUEST_START"
 export const GET_REQUEST_SUCCESS = "GET_REQUEST_SUCCESS"
 export const GET_REQUEST_FAILURE = "GET_REQUEST_FAILURE"
+export const SET_USERNAME = "SET_USERNAME"
 
 const config = {
     headers: {
@@ -25,4 +26,10 @@ export const getRequest = (url) => {
                    dispatch({ type: GET_REQUEST_FAILURE, payload: err })
               })
     }
+}
+
+export const setUsername = e => {
+     return dispatch => {
+          dispatch({ type: SET_USERNAME, payload: e.target.value })
+     }
 }
