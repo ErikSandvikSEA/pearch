@@ -1,27 +1,35 @@
-import React from 'react';
+import React, {  } from 'react';
 import './styles/App.css';
 import { Sidebar, Feed, Widgets } from './components'
 import axios from 'axios'
 import { mellin } from './secrets/secrets'
 
-const baseUrl = 'https://api.twitter.com/'
-const validToken = 'AAAAAAAAAAAAAAAAAAAAANdXIAEAAAAANDnUKIWbuosSmrf7rcbVb09GElU%3Dv17iS8cESY6DDtBbr4W0ek5byXSgs6P4pPCjUtvEnCf430Jtml'
+const baseUrl = 'https://cors-anywhere.herokuapp.com/https://api.twitter.com'
 
 const config = {
   headers: {
-    'Authorization': 'Bearer ' + 'AAAAAAAAAAAAAAAAAAAAANdXIAEAAAAANDnUKIWbuosSmrf7rcbVb09GElU%3Dv17iS8cESY6DDtBbr4W0ek5byXSgs6P4pPCjUtvEnCf430Jtml'
-  }
+    'Authorization': 'Bearer ' + mellin.BearerToken,
+    "Access-Control-Allow-Origin": "*",
+  },
 }
 
-const getData = () => {
+
+const getData = (username) => {
   axios
-    .get()
+    .get(`https://cors-anywhere.herokuapp.com/https://api.twitter.com/1.1/search/tweets.json?q=@sandviksea`, config)
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err)
+    })
 }
 
 function App() {
   return (
     //BEM
     <div className="app">
+      <button onClick={() => getData('sandviksea')}>CLICK</button>
       <Sidebar />
 
       <Feed />
