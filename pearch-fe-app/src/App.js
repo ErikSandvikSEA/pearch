@@ -16,7 +16,7 @@ const config = {
 
 const getData = (username) => {
   axios
-    .get(`https://cors-anywhere.herokuapp.com/https://api.twitter.com/1.1/search/tweets.json?q=@sandviksea`, config)
+    .get(`https://cors-anywhere.herokuapp.com/https://api.twitter.com/1.1/search/tweets.json?q=${username}`, config)
     .then(res => {
       console.log(res)
     })
@@ -29,7 +29,7 @@ function App() {
   return (
     //BEM
     <div className="app">
-      <button onClick={() => getData('sandviksea')}>CLICK</button>
+      <button onClick={() => getData('@sandviksea')}>CLICK</button>
       <Sidebar />
 
       <Feed />
