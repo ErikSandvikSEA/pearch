@@ -1,5 +1,5 @@
-import React from 'react'
-import '../styles/Sidebar.css'
+//packages
+import React, { useEffect } from 'react'
 import TwitterIcon from "@material-ui/icons/Twitter"
 import HomeIcon from '@material-ui/icons/Home'
 import SearchIcon from '@material-ui/icons/Search'
@@ -10,10 +10,28 @@ import ListAltIcon from '@material-ui/icons/ListAlt'
 import PermIdentityIcon from '@material-ui/icons/PermIdentity'
 import MoreHorizOutlined from '@material-ui/icons/MoreHorizOutlined'
 import { Button } from '@material-ui/core'
+import { useSelector, useDispatch } from 'react-redux';
 
+//files
 import SidebarOption from './SidebarOption'
+import '../styles/Sidebar.css'
+import { getRequest } from '../state/actions'
 
 function Sidebar() {
+    const username ='@sandviksea'
+    const url = `https://cors-anywhere.herokuapp.com/https://api.twitter.com/1.1/search/tweets.json?q=${username}`
+    const dispatch = useDispatch()
+    const getResponse = useSelector(state => state.getResponse)
+
+    const sendRequest = e => {
+        e.preventDefault()
+        dispatch(getRequest(url))
+    }
+
+    useEffect(() => {
+        console.log(getResponse)
+    }, [getResponse])
+
     return (
         <div className='sidebar'>
             <TwitterIcon className='sidebar__twitterIcon' />
@@ -28,7 +46,21 @@ function Sidebar() {
             <SidebarOption Icon={MoreHorizOutlined} text="Options"/>
 
 
-            <Button variant='outlined' className='sidebar__tweet'>Tweet</Button>
+            <Button 
+                variant='outlined' 
+                className='sidebar__tweet'
+            >
+                Tweet
+            </Button>
+
+            <Button 
+                variant='outlined' 
+                className='sidebar__get'
+                onClick={sendRequest}
+            >
+                Get Data
+            </Button>
+
         </div>
     )
 }
