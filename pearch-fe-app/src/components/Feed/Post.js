@@ -5,7 +5,6 @@ import { ChatBubbleOutline, Repeat, FavoriteBorder, Publish } from '@material-ui
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser'
 
 function Post(props) {
-
     const {
         displayName,
         username,

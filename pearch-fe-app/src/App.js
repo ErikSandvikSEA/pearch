@@ -6,7 +6,7 @@ function App() {
   return (
     //BEM
     <div className="app">
-      <Sidebar />xfinity
+      <Sidebar />
 
       <Feed />
 
