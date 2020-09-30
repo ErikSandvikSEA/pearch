@@ -27,7 +27,7 @@
 }
 
 .tweetBox__tweetButton {
-	background-color: var(--pearch-color) !important;
+	background-color: var(--pearch-alt-color) !important;
 	border: none !important;
 	color: white !important;
 	font-weight: 900 !important;
