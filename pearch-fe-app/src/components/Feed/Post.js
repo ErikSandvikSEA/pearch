@@ -18,25 +18,25 @@ function Post(props) {
     return (
         <div className='post'>
             <div className="post__avatar">
-                <Avatar src="https://vignette.wikia.nocookie.net/disney/images/4/43/Archimedes.png/revision/latest?cb=20140301213627" />
+                <Avatar src={avatar} />
             </div>
             <div className="post__body">
                 <div className="post__header">
                     <div className="post__headerText">
                         <h3>
-                            Archimedes the Highly Intelligent Owl{"  "}
+                            {displayName}{"  "}
                             <span className='post__headerSpecial'>
-                                <VerifiedUserIcon className="post__badge" /> @who_what_what
+                                {verified && <VerifiedUserIcon className="post__badge" />} {username}
                             </span>
                         </h3>
                     </div>
                     <div className="post__headerDescription">
-                        <p>WHO? What what???</p>
+                        <p>{text}</p>
                     </div>
                 </div>
                 <img 
                     className="post__image"
-                    src="https://png.pngtree.com/png-clipart/20190629/original/pngtree-cute-owl-cartoon-set-png-image_4100837.jpg" 
+                    src={image}
                     alt=""
                     width="250px"
                 />
