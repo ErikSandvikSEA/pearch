@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import "../../styles/Feed.css"
 import TweetBox from './TweetBox'
 import Post from './Post'
-import db from '../../firebase/firebase'
 
 function Feed(props) {
+    const getResponse = useSelector(state => state.getResponse)
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
-        db.collection('posts').onSnapshot(snapshot => (
-            setPosts(snapshot.docs.map(doc => doc.data()))
-        ))
-    })
+        setPosts(
+            getResponse && getResponse.data ? getResponse.data.statuses : []
+        )
+    }, [getResponse])
 
     return (
         <div className='feed'>
@@ -23,15 +24,15 @@ function Feed(props) {
             {posts.map((post, idx) => (
                 <Post 
                     key={idx}
-                    displayName={post.displayName}
-                    username={post.username}
-                    verified={post.verified}
+                    displayName={post.user.name}
+                    username={`@${post.user.screen_name}`}
+                    verified={post.user.verified}
                     text={post.text}
-                    avatar={post.avatar}
-                    image={post.image}
+                    avatar={post.user.profile_image_url}
+                    // image={post.image}
                 />
             ))}
-            <Post 
+            {/* <Post 
                 displayName="Archimedes the Highly-Educated Owl"
                 username="@who_what_what"
                 verified={true}
@@ -42,7 +43,7 @@ function Feed(props) {
             <Post />
             <Post />
             <Post />
-            <Post />
+            <Post /> */}
         </div>
     )
 }
