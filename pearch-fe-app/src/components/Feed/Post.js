@@ -26,7 +26,14 @@ function Post(props) {
                         <h3>
                             {displayName}{"  "}
                             <span className='post__headerSpecial'>
-                                {verified && <VerifiedUserIcon className="post__badge" />} {username}
+                                {verified && <VerifiedUserIcon className="post__badge" />} 
+                                <a 
+                                    href={`https://twitter.com/${username}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    {`@${username}`}
+                                </a>
                             </span>
                         </h3>
                     </div>

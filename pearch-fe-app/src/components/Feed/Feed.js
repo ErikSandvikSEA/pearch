@@ -24,10 +24,11 @@ function Feed(props) {
                 <Post 
                     key={idx}
                     displayName={post.user.name}
-                    username={`@${post.user.screen_name}`}
+                    username={post.user.screen_name}
                     verified={post.user.verified}
                     text={post.text}
                     avatar={post.user.profile_image_url}
+                    
                     // image={post.image}
                 />
             ))}

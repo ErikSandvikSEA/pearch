@@ -14,6 +14,16 @@
 	border-radius: 20px;
 }
 
+.post__headerSpecial > a {
+	color: var(--pearch-alt-color);
+	text-decoration: none;
+}
+
+.post__headerSpecial > a:hover {
+	color: var(--pearch-color);
+	text-decoration: underline;
+}
+
 .post__footer {
 	display: flex;
 	justify-content: space-between;
