@@ -2,6 +2,10 @@
 	padding-bottom: 10px;
 	border-bottom: 8px solid var(--pearch-background);
 	padding-right: 10px;
+	position: sticky;
+	top: 58.67px;
+	z-index: 1;
+	background: white;
 }
 
 .tweetBox > form {
