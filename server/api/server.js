@@ -14,4 +14,17 @@ server.get('/', (req, res) => {
     })
 })
 
+server.get(`/test`, (req, res) => {
+    res.status(200).json({
+        message: "This is a tester path"
+    })
+})
+
+server.post('/newroute/:username', (req, res) => {
+    const username = req.params.username
+    res.status(201).json({
+        username
+    })
+})
+
 module.exports = server
