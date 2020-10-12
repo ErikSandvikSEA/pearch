@@ -12,11 +12,11 @@ function TweetBox(props) {
     const username = useSelector(state => state.username)
     const dispatch = useDispatch()
     const getResponse = useSelector(state => state.getResponse)
-    const url = `https://cors-anywhere.herokuapp.com/https://api.twitter.com/1.1/search/tweets.json?q=@${username}`
+    const url = `localhost:8000`
     
     const sendRequest = (e) => {
         e.preventDefault()
-        dispatch(getRequest(url))
+        dispatch(getRequest(url, username))
         dispatch(setUsername(e))
     }
 
