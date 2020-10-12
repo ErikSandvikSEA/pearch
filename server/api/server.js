@@ -6,7 +6,7 @@ const redis = require('redis')
 
 //files
 const PORT = process.env.PORT || 8000
-const REDIS_PORT = process.env.PORT || 6379
+const REDIS_PORT = process.env.REDIS_PORT || 6379
 const mellin = require('../unneccessaries/notEvenNecessary')
 
 const client = redis.createClient(REDIS_PORT)
@@ -31,7 +31,7 @@ function cache(req, res, next){
         if(err) throw err
         if(data){
             res.status(200).json({
-                data: response.data
+                count: data
             })
         } else {
             next()
@@ -57,9 +57,10 @@ server.get('/tweets/:username', cache, (req, res) => {
     console.log('....fetching data')
     axios.get(`${url}${username}`, config)
         .then(response => {
-            client.SETEX(username, 1800, response.data)
+            console.log(response.data)
+            client.SETEX(username, 1800, response.data.search_metadata.count)
             res.status(200).json({
-                data: response.data
+                count: response.data.search_metadata.count
             })
         })
         .catch(err => {
