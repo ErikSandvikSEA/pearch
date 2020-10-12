@@ -4,7 +4,6 @@ const cors = require('cors')
 const axios = require('axios')
 const redis = require('redis')
 
-
 //files
 const PORT = process.env.PORT || 8000
 const REDIS_PORT = process.env.REDIS_PORT || 6379
@@ -25,7 +24,6 @@ const server = express()
 server.use(express.json())
 server.use(cors())
 
-
 function cache(req, res, next){
     const { username } = req.params
 
@@ -38,6 +36,8 @@ function cache(req, res, next){
         } else {
             next()
         }
+    })
+}
 
 server.get('/', (req, res) => {
     try{
@@ -70,5 +70,6 @@ server.get('/tweets/:username', cache, (req, res) => {
             })
         })
 }) 
+
 
 module.exports = server
