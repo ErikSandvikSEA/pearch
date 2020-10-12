@@ -38,6 +38,8 @@ function cache(req, res, next){
         } else {
             next()
         }
+    })
+}
 
 server.get('/', (req, res) => {
     try{
